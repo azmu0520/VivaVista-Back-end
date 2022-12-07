@@ -14,12 +14,12 @@ export const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 110px;
+  z-index: 106;
   .fixed-top {
-    z-index: 106;
     height: 100px;
     box-shadow: 0 2px 9px rgb(0 0 0 / 4%);
-    background-color: #fff;
   }
+  background-color: #fff;
 `;
 
 export const Wrap = styled.div`
