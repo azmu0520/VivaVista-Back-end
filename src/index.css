@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'Sfpro-Bold';
+  src: url(/src/assets/fonts/SFPRODISPLAYBOLD.OTF);
+}
+@font-face {
+  font-family: 'Sfpro-Medium';
+  src: url(/src/assets/fonts/SFPRODISPLAYMEDIUM.OTF);
+}
+@font-face {
+  font-family: 'Sfpro-Regular';
+  src: url(/src/assets/fonts/SFPRODISPLAYREGULAR.OTF);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: 'Sfpro-Regular'; */
+}
+
+.container {
+  display: flex;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
