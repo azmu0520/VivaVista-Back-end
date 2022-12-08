@@ -33,10 +33,15 @@ const Home = () => {
           alt='play'
         />
       </Wrap.Video>
-      <AntModal open={isModalOpen} onCancel={handleCancel} footer={null}>
+      <AntModal
+        centered
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null}
+      >
         <iframe
-          width='730'
-          height='410'
+          width='100%'
+          height='441'
           src='https://www.youtube.com/embed/IlVpkBf3McU?autoplay=1'
           title='YouTube video player'
           frameborder='0'

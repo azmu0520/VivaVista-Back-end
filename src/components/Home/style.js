@@ -11,6 +11,23 @@ export const AntModal = styled(Modal)`
   width: 731px !important;
   .ant-modal-content {
     height: 411px !important;
+    padding: 0 !important;
+  }
+  .ant-modal-close {
+    right: -25px;
+    color: white;
+    /* width: 35px;
+    height: 35px; */
+    top: 0;
+    right: -45px;
+    .ant-modal-close-icon svg {
+      font-size: 35px;
+      font-weight: 300;
+    }
+  }
+  .ant-modal-close:hover {
+    background-color: transparent !important;
+    color: white !important;
   }
 `;
 
