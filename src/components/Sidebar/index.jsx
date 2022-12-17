@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React from 'react';
 import { NavLink, useLocation, Outlet } from 'react-router-dom';
 import { data } from '../../utilits/sidebar';
 import { user } from '../../utilits/userInfo';
@@ -20,12 +19,8 @@ import {
   UserInfo,
 } from './style';
 
-export default function () {
-  const [state, setState] = useState(false);
+export default function Sidebarr() {
   let location = useLocation();
-  const handle = () => {
-    setState(!state);
-  };
 
   return (
     <Wrapper>
@@ -37,7 +32,7 @@ export default function () {
         </NavLink>
         <Links>
           {data?.map(({ title, Icon: Icons, path }) => (
-            <Link to={path} active={path == location.pathname}>
+            <Link to={path} active={path === location.pathname}>
               <Icons className='icon' /> {title}
             </Link>
           ))}
