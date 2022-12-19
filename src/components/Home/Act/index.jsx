@@ -1,5 +1,10 @@
 import React from 'react';
+import Table from '../../Generic/Table';
 
 export default function Act() {
-  return <div>Act</div>;
+  return (
+    <div>
+      <Table />
+    </div>
+  );
 }

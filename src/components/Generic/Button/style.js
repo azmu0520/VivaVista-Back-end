@@ -4,6 +4,7 @@ export const Wrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   width: ${({ width }) => (width ? width : 'fit-content')};
   height: ${({ height }) => (height ? height : '30px')};
   color: ${({ color }) => (color ? color : '#fff')};
