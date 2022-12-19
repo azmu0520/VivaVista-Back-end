@@ -1,5 +1,12 @@
 import React from 'react';
+import GenericFilter from '../../Generic/Filter';
+import Table from '../../Generic/Table';
 
 export default function TTN() {
-  return <div>TTN</div>;
+  return (
+    <div>
+      <GenericFilter title='ТТН' />
+      <Table />
+    </div>
+  );
 }

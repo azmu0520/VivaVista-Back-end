@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Wrap, Header, Row } from './style';
 import Button from '../../Generic/Button';
 import { useEffect } from 'react';
+import { useUsersContext } from '../../../context/users/context';
 export default function Table() {
   let tableHeader = [
     'Статус',
@@ -12,128 +13,10 @@ export default function Table() {
     'Номер и дата договора',
     'Стоимость поставки',
   ];
-  let data = [
-    {
-      id: 1,
-      status: 'canceled',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 2,
-      status: 'signed',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 3,
-      status: 'pending',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 4,
-      status: 'canceled',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 5,
-      status: 'pending',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 6,
-      status: 'canceled',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 7,
-      status: 'canceled',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 8,
-      status: 'canceled',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 9,
-      status: 'draft',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 10,
-      status: 'canceled',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 11,
-      status: 'canceled',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-    {
-      id: 12,
-      status: 'canceled',
-      type: 'Счет-фактура (вх.)',
-      update: '09.03.2021',
-      counterparty: 'ООО VENKON GROUP',
-      document_number_date: '998998933800',
-      contract_number_date: '02-53519 от 28.02.2021',
-      delivery_cost: 'Публичная оферта от 15.12.2020',
-    },
-  ];
+  const [
+    { data, status, doc_type, counterparty, doc_date, contract_date },
+    dispatch,
+  ] = useUsersContext();
   const initialState = data.reduce(
     (o, key) => ({ ...o, [`check${key.id}`]: false }),
     {}
@@ -171,7 +54,7 @@ export default function Table() {
     } else {
       setCheckedAll(false);
     }
-  }, [checked]);
+  }, [checked, status]);
   return (
     <Wrap>
       <Wrap.Navbar>
@@ -211,32 +94,57 @@ export default function Table() {
           <Header.Title>{item}</Header.Title>
         ))}
       </Header>
-      {data?.map((item) => {
-        let element = Object.keys(item);
-        element.shift();
-        return (
-          <Row key={item.id} className='grid__row'>
-            <input
-              type='checkbox'
-              name={item.id}
-              id={item.id}
-              onChange={() => toggleCheck(`check${item.id}`)}
-              checked={checked[`check${item.id}`]}
-            />
-            {element.map((value) => {
-              return (
-                <Row.Item key={`${value}-${item.id}`} bg={item[value]}>
-                  {value == 'status' ? (
-                    <label htmlFor={item.id} className='status' />
-                  ) : (
-                    <label htmlFor={item.id}>{item[value]}</label>
-                  )}
-                </Row.Item>
-              );
-            })}
-          </Row>
-        );
-      })}
+      {data
+        .filter((i) => (status == 'all' ? true : i.status == status))
+        .filter((i) =>
+          doc_type == 'all'
+            ? true
+            : i.type.toLowerCase().includes(doc_type.toLowerCase())
+        )
+        .filter((i) =>
+          doc_type == 'all'
+            ? true
+            : i.type.toLowerCase().includes(doc_type.toLowerCase())
+        )
+        .filter((i) => {
+          let date = i.contract_number_date.split(' ');
+          return doc_date == 'all' ? true : date[2] == doc_date;
+        })
+        .filter((i) => {
+          let date = i.delivery_cost.split(' ');
+          return contract_date == 'all' ? true : date[3] == contract_date;
+        })
+        .filter((i) =>
+          counterparty == 'all'
+            ? true
+            : i.counterparty.toLowerCase().includes(counterparty.toLowerCase())
+        )
+        ?.map((item) => {
+          let element = Object.keys(item);
+          element.shift();
+          return (
+            <Row key={item.id} className='grid__row'>
+              <input
+                type='checkbox'
+                name={item.id}
+                id={item.id}
+                onChange={() => toggleCheck(`check${item.id}`)}
+                checked={checked[`check${item.id}`]}
+              />
+              {element.map((value) => {
+                return (
+                  <Row.Item key={`${value}-${item.id}`} bg={item[value]}>
+                    {value == 'status' ? (
+                      <label htmlFor={item.id} className='status' />
+                    ) : (
+                      <label htmlFor={item.id}>{item[value]}</label>
+                    )}
+                  </Row.Item>
+                );
+              })}
+            </Row>
+          );
+        })}
     </Wrap>
   );
 }
