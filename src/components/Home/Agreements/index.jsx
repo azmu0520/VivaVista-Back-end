@@ -1,5 +1,10 @@
 import React from 'react';
+import Filter from '../../Generic/Filter';
 
 export default function Agreements() {
-  return <div>Agreements</div>;
+  return (
+    <div>
+      <Filter />
+    </div>
+  );
 }
