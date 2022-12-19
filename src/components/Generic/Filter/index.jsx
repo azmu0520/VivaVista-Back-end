@@ -12,10 +12,8 @@ export default function GenericFilter({ title }) {
     dispatch({ type: target.name, payload: target.value });
   };
   let handleDate = ({ target }) => {
-    console.log(target.value, 'p');
     dispatch({ type: target.name, payload: target.value });
   };
-  console.log(counterparty, doc_type);
   return (
     <Wrap>
       <Wrap.Header>

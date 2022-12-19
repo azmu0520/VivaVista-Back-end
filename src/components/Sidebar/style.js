@@ -19,13 +19,7 @@ const Sidebar = styled.div`
   min-height: 100vh;
 `;
 
-const Links = styled.ul`
-  a {
-    text-decoration: ${(prop) => {
-      console.log(prop);
-    }};
-  }
-`;
+const Links = styled.ul``;
 const Link = styled(NavLink)`
   display: flex;
   align-items: center;
