@@ -4,20 +4,22 @@ import { ReactComponent as Down } from '../assets/icons/arrow_downward.svg';
 import { ReactComponent as Up } from '../assets/icons/arrow_upward.svg';
 import { ReactComponent as Remove } from '../assets/icons/remove.svg';
 import { ReactComponent as Save } from '../assets/icons/save.svg';
+import AddPage from '../components/Add';
+import Invoice from '../components/Invoice';
 export const data = [
   {
     id: 0,
     title: 'Создать',
     path: '/add',
     Icon: Add,
-    Component: Generic,
+    Component: AddPage,
   },
   {
     id: 1,
     title: 'Входящие',
     path: '/inbox',
     Icon: Down,
-    Component: Generic,
+    Component: Invoice,
   },
   {
     id: 2,

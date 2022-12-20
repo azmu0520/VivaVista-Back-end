@@ -9,6 +9,10 @@ const Button = ({
   radius,
   size,
   className,
+  margin,
+  padding,
+  border,
+  onClick,
 }) => {
   return (
     <Wrap
@@ -19,6 +23,10 @@ const Button = ({
       bg={bg}
       radius={radius}
       className={className}
+      margin={margin}
+      padding={padding}
+      border={border}
+      onClick={onClick}
     >
       {children}
     </Wrap>

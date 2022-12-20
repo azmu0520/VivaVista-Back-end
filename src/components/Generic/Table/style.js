@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { ReactComponent as FilterIcon } from '../../../assets/icons/filter.svg';
+import { ReactComponent as Yes } from '../../../assets/icons/yes.svg';
+import { ReactComponent as No } from '../../../assets/icons/no.svg';
+import { ReactComponent as Arrow } from '../../../assets/icons/arrow.svg';
 
 const getBgColor = ({ bg }) => {
   bg = bg?.toLowerCase();
@@ -143,5 +146,78 @@ Row.Item = styled.div`
     height: 12px;
     border-radius: 50%;
     background: ${(bg) => getBgColor(bg).bg} !important;
+  }
+`;
+
+export const Footer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+Footer.Controllers = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+Footer.IconYes = styled(Yes)`
+  margin-right: 8px;
+`;
+Footer.IconNo = styled(No)`
+  margin-right: 8px;
+`;
+
+Footer.SelectWrap = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  position: relative;
+`;
+
+Footer.SizeSelect = styled.select`
+  width: 182px;
+  height: 48px;
+  background: #ffffff;
+  border: 0.5px solid #d9d9d9;
+  border-radius: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 12px;
+  position: relative;
+  outline: none;
+`;
+
+Footer.Arrow = styled(Arrow)`
+  position: ${({ page }) => (page ? '' : 'absolute')};
+  margin-right: ${({ page }) => (page ? '8px' : '0')};
+  margin-left: ${({ left }) => (left ? '8px' : '0')};
+  path {
+    fill: ${({ page }) => (page ? 'white' : '')};
+  }
+  transform: ${({ page, left }) =>
+    page && left ? 'rotate(-90deg)' : 'rotate(90deg)'};
+
+  right: 10px;
+`;
+
+Footer.PaginationWrap = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  margin-left: auto;
+`;
+
+Footer.PaginationNums = styled.div`
+  display: flex;
+  align-items: start;
+  padding: 0 30px;
+  span:first-child {
+    color: #2b63c0;
+  }
+  span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 111.63%;
+    color: #1e1e1e;
+    padding: 0 8px;
   }
 `;
