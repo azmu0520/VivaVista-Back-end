@@ -16,7 +16,7 @@ const Card = ({ title, comment, hoverText, hoverImage }) => (
         <HoverSite.Image className='hoverImage' src={hoverImage} />
       </OffHover.Wrap>
     </OffHover>
-    {/* <HoverSite className='hover_site'></HoverSite> */}
+    <HoverSite className='hover_site'></HoverSite>
   </Wrap>
 );
 
